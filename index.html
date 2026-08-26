@@ -465,6 +465,39 @@ textarea.form-input{resize:vertical;min-height:80px;line-height:1.55}
 .bar-fill{position:relative;overflow:hidden}
 .bar-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,0) 60%)}
 .bar-track{height:8px}
+
+/* PRICING & PLANS PAGE */
+.cost-compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.cost-col-head{font-family:var(--display);font-size:16px;font-weight:800;margin-bottom:2px;letter-spacing:-.01em}
+.cost-col-sub{font-size:11px;color:var(--muted);margin-bottom:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.cost-row{display:flex;align-items:flex-start;gap:11px;padding:11px 0;border-top:1px dotted var(--border-light)}
+.cost-row:first-of-type{border-top:none}
+.cost-row .cost-icon{width:28px;height:28px;border-radius:8px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.cost-row.ai .cost-icon{background:var(--green-bg);border-color:#B7E3CA;color:var(--green)}
+.cost-row-title{font-size:12.5px;font-weight:700;color:var(--text);line-height:1.4}
+.cost-row-sub{font-size:11.5px;color:var(--muted);margin-top:2px;line-height:1.4}
+.cost-row.ai .cost-row-sub{color:var(--green)}
+.cost-total-box{margin-top:16px;padding-top:16px;border-top:2px solid var(--border)}
+.cost-total-box.ai{border-top-color:var(--accent2)}
+.cost-total-label{font-family:var(--display);font-size:15.5px;font-weight:800;color:var(--text)}
+.cost-total-label.ai{color:var(--accent2)}
+.cost-save-banner{margin-top:22px;background:var(--accent2);color:#fff;border-radius:var(--radius);padding:15px 20px;text-align:center;font-family:var(--display);font-weight:700;font-size:14.5px;letter-spacing:-.005em}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:6px}
+.plan-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:26px 22px 22px;position:relative;transition:all .15s;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.plan-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.plan-card.popular{border-color:var(--accent2);box-shadow:var(--shadow-md)}
+.plan-ribbon{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent2);color:#fff;font-size:10.5px;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:.05em;white-space:nowrap;text-transform:uppercase}
+.plan-name{font-family:var(--display);font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px;color:var(--text)}
+.plan-price{font-family:var(--display);font-size:34px;font-weight:800;color:var(--text);letter-spacing:-.02em;margin-bottom:2px}
+.plan-price span{font-size:13px;font-weight:600;color:var(--muted)}
+.plan-includes{font-size:11px;color:var(--accent2);font-weight:700;margin:16px 0 8px;text-transform:uppercase;letter-spacing:.03em}
+.plan-features{list-style:none;margin-bottom:18px;flex:1}
+.plan-features li{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--text);padding:6px 0;line-height:1.45}
+.plan-features li .chk{color:var(--green);flex-shrink:0;margin-top:1px;font-weight:700}
+.plan-divider{border-top:1px solid var(--border-light);margin:2px 0 12px}
+.percent-note-card{background:var(--bg);border:1.5px dashed var(--border);border-radius:var(--radius);padding:32px 24px;text-align:center}
+.percent-note-icon{font-size:30px;margin-bottom:10px}
+@media(max-width:900px){.pricing-grid{grid-template-columns:1fr}.cost-compare-grid{grid-template-columns:1fr!important;gap:8px}}
 </style>
 </head>
 <body>
@@ -557,6 +590,11 @@ textarea.form-input{resize:vertical;min-height:80px;line-height:1.55}
       <div class="nav-item" data-page="analytics" onclick="showPage('analytics',this)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         Analytics
+      </div>
+      <div class="nav-label">Billing</div>
+      <div class="nav-item" data-page="pricing" onclick="showPage('pricing',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Pricing & Plans
       </div>
     </nav>
     <div class="sidebar-footer">
@@ -1160,6 +1198,168 @@ Versandinformationen 🚚</textarea>
         </div>
       </div>
       <div class="drv-grid" id="team-grid"></div>
+    </div>
+
+    <!-- ===== PRICING & PLANS ===== -->
+    <div class="page" id="page-pricing">
+      <div class="topbar">
+        <div class="topbar-left">
+          <div class="page-title">Pricing <span>& Plans</span></div>
+          <div class="page-sub">See what running this manually would cost vs automating it — then pick the plan that fits your store</div>
+        </div>
+      </div>
+
+      <!-- COST COMPARISON -->
+      <div class="card">
+        <div class="card-head" style="align-items:flex-start;margin-bottom:20px">
+          <div>
+            <div class="card-title" style="font-size:18px;margin-bottom:4px">The Real Cost of Doing It Manually</div>
+            <div style="font-size:12px;color:var(--muted)">What it takes to run this without AI — compared to one AI agent.</div>
+          </div>
+        </div>
+        <div class="cost-compare-grid">
+          <!-- MANUAL TEAM -->
+          <div>
+            <div class="cost-col-head">10-Person Team</div>
+            <div class="cost-col-sub">Manual operations</div>
+            <div class="cost-row">
+              <div class="cost-icon">👤</div>
+              <div><div class="cost-row-title">Customer support (3-4 staff)</div><div class="cost-row-sub">slow response time, inconsistent replies</div></div>
+            </div>
+            <div class="cost-row">
+              <div class="cost-icon">📊</div>
+              <div><div class="cost-row-title">Order entry (2 staff)</div><div class="cost-row-sub">manual Excel logging, frequent errors</div></div>
+            </div>
+            <div class="cost-row">
+              <div class="cost-icon">🔍</div>
+              <div><div class="cost-row-title">Product research (1 staff)</div><div class="cost-row-sub">hours wasted, misses trends</div></div>
+            </div>
+            <div class="cost-row">
+              <div class="cost-icon">🔔</div>
+              <div><div class="cost-row-title">Follow-up & reminders (1 staff)</div><div class="cost-row-sub">inconsistent, often forgotten</div></div>
+            </div>
+            <div class="cost-row">
+              <div class="cost-icon">🌐</div>
+              <div><div class="cost-row-title">Multilingual support (1-2 staff)</div><div class="cost-row-sub">delays, limited languages</div></div>
+            </div>
+            <div class="cost-row">
+              <div class="cost-icon">📈</div>
+              <div><div class="cost-row-title">Analytics & reporting (1 staff)</div><div class="cost-row-sub">manual Excel tracking, outdated data</div></div>
+            </div>
+            <div class="cost-total-box">
+              <div class="cost-total-label">Estimated cost: $1,650 – $2,400/month</div>
+            </div>
+          </div>
+          <!-- AI AGENT -->
+          <div>
+            <div class="cost-col-head" style="color:var(--accent2)">One AI Agent</div>
+            <div class="cost-col-sub">Fully automated</div>
+            <div class="cost-row ai">
+              <div class="cost-icon">✅</div>
+              <div><div class="cost-row-title">Customer support</div><div class="cost-row-sub">instant replies, 24/7, every language</div></div>
+            </div>
+            <div class="cost-row ai">
+              <div class="cost-icon">✅</div>
+              <div><div class="cost-row-title">Order entry</div><div class="cost-row-sub">fully automatic, zero errors</div></div>
+            </div>
+            <div class="cost-row ai">
+              <div class="cost-icon">✅</div>
+              <div><div class="cost-row-title">Product research</div><div class="cost-row-sub">9 hours/day across 6 platforms</div></div>
+            </div>
+            <div class="cost-row ai">
+              <div class="cost-icon">✅</div>
+              <div><div class="cost-row-title">Follow-up & reminders</div><div class="cost-row-sub">automatic cart recovery funnel</div></div>
+            </div>
+            <div class="cost-row ai">
+              <div class="cost-icon">✅</div>
+              <div><div class="cost-row-title">Multilingual support</div><div class="cost-row-sub">unlimited languages, real-time</div></div>
+            </div>
+            <div class="cost-row ai">
+              <div class="cost-icon">✅</div>
+              <div><div class="cost-row-title">Analytics & reporting</div><div class="cost-row-sub">live dashboard, always up to date</div></div>
+            </div>
+            <div class="cost-total-box ai">
+              <div class="cost-total-label ai">Your cost: $149/month</div>
+            </div>
+          </div>
+        </div>
+        <div class="cost-save-banner">Save up to 90% and never manage a team again.</div>
+      </div>
+
+      <!-- PRICING PLANS -->
+      <div class="card">
+        <div class="card-head" style="align-items:center;flex-wrap:wrap">
+          <div class="card-title" style="font-size:18px">Choose Your Plan</div>
+          <div class="range-toggle" id="pricing-plan-toggle">
+            <button class="range-btn active" data-plan="fixed" onclick="setPricingMode('fixed',this)">Fixed Plan</button>
+            <button class="range-btn" data-plan="percentage" onclick="setPricingMode('percentage',this)">Percentage Plan</button>
+          </div>
+        </div>
+
+        <div id="pricing-fixed-panel" class="pricing-grid">
+          <!-- STARTER -->
+          <div class="plan-card">
+            <div class="plan-name">Starter</div>
+            <div class="plan-price">$29<span>/month</span></div>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              <li><span class="chk">✓</span> 3 hours daily product hunting</li>
+              <li><span class="chk">✓</span> 3+ languages supported</li>
+              <li><span class="chk">✓</span> 1,000 max orders/month</li>
+              <li><span class="chk">✓</span> Abandoned cart reminders</li>
+              <li><span class="chk">✓</span> Up to 5 active coupons & deals</li>
+              <li><span class="chk">✓</span> Basic revenue analytics</li>
+              <li><span class="chk">✓</span> 10 delivery zones & riders</li>
+              <li><span class="chk">✓</span> Up to 3 team members</li>
+            </ul>
+            <button class="btn btn-outline" style="width:100%;justify-content:center" onclick="toast('Starter plan selected ✓')">Get Started</button>
+          </div>
+          <!-- GROWTH (Most Popular) -->
+          <div class="plan-card popular">
+            <div class="plan-ribbon">Most Popular</div>
+            <div class="plan-name">Growth</div>
+            <div class="plan-price">$79<span>/month</span></div>
+            <div class="plan-includes">Everything in Starter, plus:</div>
+            <ul class="plan-features">
+              <li><span class="chk">✓</span> 6 hours daily product hunting</li>
+              <li><span class="chk">✓</span> 7+ languages supported</li>
+              <li><span class="chk">✓</span> 3,000 max orders/month</li>
+              <li><span class="chk">✓</span> Cart recovery + engagement tracking</li>
+              <li><span class="chk">✓</span> Up to 20 active coupons & deals</li>
+              <li><span class="chk">✓</span> Sentiment tracking on mentions</li>
+              <li><span class="chk">✓</span> Peak hours & language analytics</li>
+              <li><span class="chk">✓</span> Unlimited delivery zones & riders</li>
+              <li><span class="chk">✓</span> Unlimited team members</li>
+            </ul>
+            <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="toast('Growth plan selected ✓')">Get Started</button>
+          </div>
+          <!-- PRO -->
+          <div class="plan-card">
+            <div class="plan-name">Pro</div>
+            <div class="plan-price">$149<span>/month</span></div>
+            <div class="plan-includes">Everything in Growth, plus:</div>
+            <ul class="plan-features">
+              <li><span class="chk">✓</span> 9 hours daily product hunting</li>
+              <li><span class="chk">✓</span> Unlimited languages</li>
+              <li><span class="chk">✓</span> 7,000+ max orders/month</li>
+              <li><span class="chk">✓</span> Full cart recovery funnel</li>
+              <li><span class="chk">✓</span> Unlimited coupons & deals</li>
+              <li><span class="chk">✓</span> Sentiment + problem detection</li>
+              <li><span class="chk">✓</span> Full analytics: sizes, colors, add-ons, top products</li>
+            </ul>
+            <button class="btn btn-outline" style="width:100%;justify-content:center" onclick="toast('Pro plan selected ✓')">Get Started</button>
+          </div>
+        </div>
+
+        <div id="pricing-percentage-panel" style="display:none">
+          <div class="percent-note-card">
+            <div class="percent-note-icon">📊</div>
+            <div style="font-family:var(--display);font-size:15px;font-weight:800;margin-bottom:6px">Percentage-Based Pricing</div>
+            <div style="font-size:12.5px;color:var(--muted);max-width:480px;margin:0 auto 16px;line-height:1.6">Pay a small percentage of your monthly order volume instead of a fixed fee — ideal for stores that are just scaling up. Rates are tailored to your order volume and category mix.</div>
+            <button class="btn btn-primary" onclick="toast('A team member will reach out about custom percentage pricing')">Contact Sales</button>
+          </div>
+        </div>
+      </div>
     </div>
 
   </main>
@@ -2794,6 +2994,16 @@ function renderHuntMentions(){
         <a href="${esc(m.url)}" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600">View Post →</a>
       </div>
     </div>`).join('');
+}
+
+// ======================== PRICING & PLANS ========================
+function setPricingMode(mode,el){
+  document.querySelectorAll('#pricing-plan-toggle .range-btn').forEach(b=>b.classList.remove('active'));
+  if(el)el.classList.add('active');
+  const fixedPanel=document.getElementById('pricing-fixed-panel');
+  const pctPanel=document.getElementById('pricing-percentage-panel');
+  if(mode==='percentage'){fixedPanel.style.display='none';pctPanel.style.display='block';}
+  else{fixedPanel.style.display='grid';pctPanel.style.display='none';}
 }
 
 // ======================== TOAST ========================
