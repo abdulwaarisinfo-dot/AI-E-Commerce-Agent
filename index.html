@@ -495,6 +495,7 @@ textarea.form-input{resize:vertical;min-height:80px;line-height:1.55}
 .plan-features li{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--text);padding:6px 0;line-height:1.45}
 .plan-features li .chk{color:var(--green);flex-shrink:0;margin-top:1px;font-weight:700}
 .plan-divider{border-top:1px solid var(--border-light);margin:2px 0 12px}
+.plan-commission{font-size:12px;color:var(--accent2);font-weight:700;margin-bottom:14px}
 .percent-note-card{background:var(--bg);border:1.5px dashed var(--border);border-radius:var(--radius);padding:32px 24px;text-align:center}
 .percent-note-icon{font-size:30px;margin-bottom:10px}
 @media(max-width:900px){.pricing-grid{grid-template-columns:1fr}.cost-compare-grid{grid-template-columns:1fr!important;gap:8px}}
@@ -1357,14 +1358,64 @@ Versandinformationen 🚚</textarea>
           </div>
         </div>
 
-        <div id="pricing-percentage-panel" style="display:none">
-          <div class="percent-note-card">
-            <div class="percent-note-icon">📊</div>
-            <div style="font-family:var(--display);font-size:15px;font-weight:800;margin-bottom:6px">Percentage-Based Pricing</div>
-            <div style="font-size:12.5px;color:var(--muted);max-width:480px;margin:0 auto 16px;line-height:1.6">Pay a small percentage of your monthly order volume instead of a fixed fee — ideal for stores that are just scaling up. Rates are tailored to your order volume and category mix.</div>
-            <button class="btn btn-primary" onclick="openLeadModal('Percentage / Custom')">Contact Sales</button>
+        <div id="pricing-percentage-panel" class="pricing-grid" style="display:none">
+          <!-- PERCENTAGE STARTER -->
+          <div class="plan-card">
+            <div class="plan-name">Starter</div>
+            <div class="plan-price">$29<span>/month</span></div>
+            <div class="plan-commission">+ 4% commission per successful order</div>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              <li><span class="chk">✓</span> 3 hours daily product hunting</li>
+              <li><span class="chk">✓</span> 3+ languages supported</li>
+              <li><span class="chk">✓</span> 1,000 max orders/month</li>
+              <li><span class="chk">✓</span> Abandoned cart reminders</li>
+              <li><span class="chk">✓</span> Up to 5 active coupons & deals</li>
+              <li><span class="chk">✓</span> Basic revenue analytics</li>
+              <li><span class="chk">✓</span> 10 delivery zones & riders</li>
+              <li><span class="chk">✓</span> Up to 3 team members</li>
+            </ul>
+            <button class="btn btn-outline" style="width:100%;justify-content:center" onclick="openLeadModal('Percentage Starter — $29 + 4%')">Get Started</button>
+          </div>
+          <!-- PERCENTAGE GROWTH (Most Popular) -->
+          <div class="plan-card popular">
+            <div class="plan-ribbon">Most Popular</div>
+            <div class="plan-name">Growth</div>
+            <div class="plan-price">$79<span>/month</span></div>
+            <div class="plan-commission">+ 2% commission per successful order</div>
+            <div class="plan-includes">Everything in Starter, plus:</div>
+            <ul class="plan-features">
+              <li><span class="chk">✓</span> 6 hours daily product hunting</li>
+              <li><span class="chk">✓</span> 7+ languages supported</li>
+              <li><span class="chk">✓</span> 3,000 max orders/month</li>
+              <li><span class="chk">✓</span> Cart recovery + engagement tracking</li>
+              <li><span class="chk">✓</span> Up to 20 active coupons & deals</li>
+              <li><span class="chk">✓</span> Sentiment tracking on mentions</li>
+              <li><span class="chk">✓</span> Peak hours & language analytics</li>
+              <li><span class="chk">✓</span> Unlimited delivery zones & riders</li>
+              <li><span class="chk">✓</span> Unlimited team members</li>
+            </ul>
+            <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="openLeadModal('Percentage Growth — $79 + 2%')">Get Started</button>
+          </div>
+          <!-- PERCENTAGE PRO -->
+          <div class="plan-card">
+            <div class="plan-name">Pro</div>
+            <div class="plan-price">$139<span>/month</span></div>
+            <div class="plan-commission">+ 1% commission per successful order</div>
+            <div class="plan-includes">Everything in Growth, plus:</div>
+            <ul class="plan-features">
+              <li><span class="chk">✓</span> 9 hours daily product hunting</li>
+              <li><span class="chk">✓</span> Unlimited languages</li>
+              <li><span class="chk">✓</span> 7,000+ max orders/month</li>
+              <li><span class="chk">✓</span> Full cart recovery funnel</li>
+              <li><span class="chk">✓</span> Unlimited coupons & deals</li>
+              <li><span class="chk">✓</span> Sentiment + problem detection</li>
+              <li><span class="chk">✓</span> Full analytics: sizes, colors, add-ons, top products</li>
+            </ul>
+            <button class="btn btn-outline" style="width:100%;justify-content:center" onclick="openLeadModal('Percentage Pro — $139 + 1%')">Get Started</button>
           </div>
         </div>
+        <div style="font-size:11.5px;color:var(--muted);text-align:center;margin-top:14px">Submit the form and we'll reach out within 24 hours.</div>
       </div>
 
       <!-- WHY CHOOSE US -->
@@ -1689,11 +1740,16 @@ Versandinformationen 🚚</textarea>
           <option value="Starter">Starter — $79/month</option>
           <option value="Growth">Growth — $129/month</option>
           <option value="Pro">Pro — $299/month</option>
-          <option value="Percentage / Custom">Percentage / Custom Pricing</option>
+          <option value="Percentage Starter — $29 + 4%">Percentage — Starter ($29/month + 4%)</option>
+          <option value="Percentage Growth — $79 + 2%">Percentage — Growth ($79/month + 2%)</option>
+          <option value="Percentage Pro — $139 + 1%">Percentage — Pro ($139/month + 1%)</option>
           <option value="General Inquiry">General Inquiry</option>
         </select>
       </div>
       <div class="form-group full"><label class="form-label">Message (optional)</label><textarea class="form-input" id="lead-message" rows="3" placeholder="Tell us a bit about your store…"></textarea></div>
+      <div class="form-group full" style="margin-top:-6px">
+        <div style="font-size:11.5px;color:var(--muted);text-align:center">We'll reach out within 24 hours after you submit.</div>
+      </div>
     </div>
     <div class="modal-footer">
       <button class="btn btn-outline btn-sm" onclick="closeLeadModal()">Cancel</button>
@@ -3067,7 +3123,7 @@ function setPricingMode(mode,el){
   if(el)el.classList.add('active');
   const fixedPanel=document.getElementById('pricing-fixed-panel');
   const pctPanel=document.getElementById('pricing-percentage-panel');
-  if(mode==='percentage'){fixedPanel.style.display='none';pctPanel.style.display='block';}
+  if(mode==='percentage'){fixedPanel.style.display='none';pctPanel.style.display='grid';}
   else{fixedPanel.style.display='grid';pctPanel.style.display='none';}
 }
 
@@ -3102,7 +3158,7 @@ function submitLead(){
   const waUrl='https://wa.me/'+LEAD_WHATSAPP_NUMBER+'?text='+encodeURIComponent(waText);
   window.open(waUrl,'_blank');
   closeLeadModal();
-  toast('Opening WhatsApp to send this to us ✓');
+  toast("Submitted — we'll reach out within 24 hours ✓");
 }
 
 // ======================== TOAST ========================
