@@ -123,6 +123,37 @@ img,svg{display:block}
 .section-head.center{margin-left:auto;margin-right:auto;text-align:center}
 @media(max-width:640px){.section-head h2{font-size:26px}}
 
+/* ============ HUNTING PREVIEW ============ */
+.hunt-preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+@media(max-width:760px){.hunt-preview-grid{grid-template-columns:1fr}}
+.trend-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);transition:all .18s}
+.trend-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.trend-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px}
+.trend-cat{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.trend-name{font-family:var(--display);font-size:15px;font-weight:700}
+.trend-badge{background:var(--green-bg);color:var(--green);border-radius:20px;padding:3px 9px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0}
+.hunt-quote{background:var(--bg);border-left:3px solid var(--border);border-radius:6px;padding:10px 12px;font-size:12.5px;color:var(--text);font-style:italic;line-height:1.55;margin-bottom:12px}
+.hunt-meta-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.hunt-meta-chip{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:var(--bg);border:1px solid var(--border);color:var(--muted)}
+.hunt-plat-row{display:flex;gap:6px}
+.mp-badge{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mp-badge svg{width:12px;height:12px}
+
+.mention-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.mention-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.mention-grid{grid-template-columns:1fr}}
+.mention-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);transition:all .18s}
+.mention-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.mention-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;gap:8px}
+.mention-who{display:flex;align-items:center;gap:7px}
+.mention-handle{font-size:12px;font-weight:700;color:var(--text)}
+.mention-text{font-size:12.5px;color:var(--text);line-height:1.55;margin-bottom:10px}
+.mention-foot{display:flex;align-items:center;justify-content:space-between;font-size:10.5px;color:var(--muted2)}
+.pill{border-radius:20px;font-size:10.5px;font-weight:700;padding:2px 8px;display:inline-block;white-space:nowrap}
+.pill.Positive{background:var(--green-bg);color:var(--green)}
+.pill.Neutral{background:var(--surface2);color:var(--muted)}
+.pill.Negative{background:var(--red-bg);color:var(--red)}
+
 /* ============ FEATURE GRID ============ */
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media(max-width:900px){.feat-grid{grid-template-columns:repeat(2,1fr)}}
@@ -273,6 +304,79 @@ img,svg{display:block}
       <span class="plat-pill"><span class="plat-icon-badge" style="background:#0A66C2"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="9.5" width="2.6" height="8.3" fill="#fff"/><circle cx="6.3" cy="6.4" r="1.5" fill="#fff"/><path d="M10.3 9.5H12.8v1.2c.5-.8 1.4-1.4 2.7-1.4 2.1 0 3.3 1.4 3.3 3.9v4.6H16.2V13.7c0-1.2-.4-2-1.5-2s-1.7.8-1.7 2v4.1H10.3Z" fill="#fff"/></svg></span>LinkedIn</span>
       <span class="plat-pill"><span class="plat-icon-badge" style="background:#0F1419"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>X</span>
       <span class="plat-pill"><span class="plat-icon-badge" style="background:#E4405F"><svg viewBox="0 0 24 24" fill="none"><rect x="5.5" y="5.5" width="13" height="13" rx="4" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="3.2" stroke="#fff" stroke-width="1.5"/><circle cx="16.1" cy="7.9" r="1" fill="#fff"/></svg></span>Instagram</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT HUNTING PREVIEW ============ -->
+<section class="section-tight">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Product Hunting</div>
+      <h2>Hears what shoppers want before you do</h2>
+      <p>ShopBot listens across six platforms, surfaces trending demand, and drops the raw customer language straight into your dashboard.</p>
+    </div>
+
+    <div class="hunt-preview-grid">
+      <div class="trend-card reveal">
+        <div class="trend-top">
+          <div><div class="trend-cat">Electronics</div><div class="trend-name">Portable Mini Projector</div></div>
+          <span class="trend-badge">↑ 34%</span>
+        </div>
+        <div class="hunt-quote">"Been looking for a projector I can actually take camping, everything I find is either too expensive or too dim."</div>
+        <div class="hunt-meta-row">
+          <span class="hunt-meta-chip">💬 1,240 mentions</span>
+          <span class="hunt-meta-chip">🔥 High demand</span>
+        </div>
+        <div class="hunt-plat-row">
+          <span class="mp-badge" style="background:#FF4500"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="14.2" r="7.3" fill="#fff"/><circle cx="9.2" cy="14" r="1.15" fill="#FF4500"/><circle cx="14.8" cy="14" r="1.15" fill="#FF4500"/><path d="M9 17c.8.7 1.9 1 3 1s2.2-.3 3-1" stroke="#FF4500" stroke-width="1.1" stroke-linecap="round"/><circle cx="17.3" cy="9.2" r="1.6" fill="#fff"/><path d="M12 9.5 12.9 4.6" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/><circle cx="13.1" cy="4.3" r="1.1" fill="#fff"/></svg></span>
+          <span class="mp-badge" style="background:#0F1419"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="mp-badge" style="background:#E4405F"><svg viewBox="0 0 24 24" fill="none"><rect x="5.5" y="5.5" width="13" height="13" rx="4" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="3.2" stroke="#fff" stroke-width="1.5"/><circle cx="16.1" cy="7.9" r="1" fill="#fff"/></svg></span>
+        </div>
+      </div>
+      <div class="trend-card reveal">
+        <div class="trend-top">
+          <div><div class="trend-cat">Electronics</div><div class="trend-name">Wireless Charging Stand (3-in-1)</div></div>
+          <span class="trend-badge">↑ 28%</span>
+        </div>
+        <div class="hunt-quote">"Sick of 3 separate cables on my desk for phone, watch and earbuds."</div>
+        <div class="hunt-meta-row">
+          <span class="hunt-meta-chip">💬 980 mentions</span>
+          <span class="hunt-meta-chip">🔥 High demand</span>
+        </div>
+        <div class="hunt-plat-row">
+          <span class="mp-badge" style="background:#0F1419"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="mp-badge" style="background:#229ED9"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.6 19 5.2c.7-.3 1.4.3 1.1 1.1l-2.6 12.6c-.2.9-1.1 1.1-1.8.6l-3.9-2.9-2 1.9c-.2.2-.5.3-.8.2l.3-3.9 7.1-6.4c.3-.3-.1-.4-.4-.2l-8.7 5.5-3.7-1.1c-.8-.2-.8-.8.1-1.1Z" fill="#fff"/></svg></span>
+          <span class="mp-badge" style="background:#FF4500"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="14.2" r="7.3" fill="#fff"/><circle cx="9.2" cy="14" r="1.15" fill="#FF4500"/><circle cx="14.8" cy="14" r="1.15" fill="#FF4500"/><path d="M9 17c.8.7 1.9 1 3 1s2.2-.3 3-1" stroke="#FF4500" stroke-width="1.1" stroke-linecap="round"/><circle cx="17.3" cy="9.2" r="1.6" fill="#fff"/><path d="M12 9.5 12.9 4.6" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/><circle cx="13.1" cy="4.3" r="1.1" fill="#fff"/></svg></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mention-grid">
+      <div class="mention-card reveal">
+        <div class="mention-head">
+          <div class="mention-who"><span class="mp-badge" style="background:#FF4500"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="14.2" r="7.3" fill="#fff"/><circle cx="9.2" cy="14" r="1.15" fill="#FF4500"/><circle cx="14.8" cy="14" r="1.15" fill="#FF4500"/><path d="M9 17c.8.7 1.9 1 3 1s2.2-.3 3-1" stroke="#FF4500" stroke-width="1.1" stroke-linecap="round"/><circle cx="17.3" cy="9.2" r="1.6" fill="#fff"/><path d="M12 9.5 12.9 4.6" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/><circle cx="13.1" cy="4.3" r="1.1" fill="#fff"/></svg></span><span class="mention-handle">u/karachi_shopper22</span></div>
+          <span class="pill Neutral">Neutral</span>
+        </div>
+        <div class="mention-text">"Does anyone know a store that ships mini projectors nationwide? Tired of AliExpress taking a month."</div>
+        <div class="mention-foot"><span>❤️ 142 engagements</span><span>2h ago</span></div>
+      </div>
+      <div class="mention-card reveal">
+        <div class="mention-head">
+          <div class="mention-who"><span class="mp-badge" style="background:#0F1419"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span><span class="mention-handle">@blaireklein</span></div>
+          <span class="pill Positive">Positive</span>
+        </div>
+        <div class="mention-text">"Finally found a wireless charging stand that doesn't slide around my desk. Game changer for WFH setups."</div>
+        <div class="mention-foot"><span>❤️ 389 engagements</span><span>4h ago</span></div>
+      </div>
+      <div class="mention-card reveal">
+        <div class="mention-head">
+          <div class="mention-who"><span class="mp-badge" style="background:#E4405F"><svg viewBox="0 0 24 24" fill="none"><rect x="5.5" y="5.5" width="13" height="13" rx="4" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="3.2" stroke="#fff" stroke-width="1.5"/><circle cx="16.1" cy="7.9" r="1" fill="#fff"/></svg></span><span class="mention-handle">@minimal.home.pk</span></div>
+          <span class="pill Negative">Negative</span>
+        </div>
+        <div class="mention-text">"DM me if you know a reliable seller for standing desk converters in Pakistan, my back can't take it anymore 😭"</div>
+        <div class="mention-foot"><span>❤️ 97 engagements</span><span>6h ago</span></div>
+      </div>
     </div>
   </div>
 </section>
