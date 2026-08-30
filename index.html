@@ -123,6 +123,29 @@ img,svg{display:block}
 .section-head.center{margin-left:auto;margin-right:auto;text-align:center}
 @media(max-width:640px){.section-head h2{font-size:26px}}
 
+/* ============ PRICING PLANS (as in dashboard) ============ */
+.range-toggle{display:inline-flex;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:3px;gap:2px}
+.range-btn{border:none;background:transparent;color:var(--muted);font-size:12px;font-weight:700;padding:8px 16px;border-radius:6px;cursor:pointer;transition:all .12s;font-family:var(--font)}
+.range-btn:hover:not(.active){color:var(--text)}
+.range-btn.active{background:var(--accent);color:#fff;box-shadow:var(--shadow)}
+.pricing-toggle-row{display:flex;align-items:center;justify-content:center;margin-bottom:32px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.pricing-grid{grid-template-columns:1fr}}
+.plan-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:26px 22px 22px;position:relative;transition:all .15s;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.plan-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.plan-card.popular{border-color:var(--accent2);box-shadow:var(--shadow-md)}
+.plan-ribbon{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent2);color:#fff;font-size:10.5px;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:.05em;white-space:nowrap;text-transform:uppercase}
+.plan-name{font-family:var(--display);font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px;color:var(--text)}
+.plan-price{font-family:var(--display);font-size:34px;font-weight:800;color:var(--text);letter-spacing:-.02em;margin-bottom:2px}
+.plan-price span{font-size:13px;font-weight:600;color:var(--muted)}
+.plan-includes{font-size:11px;color:var(--accent2);font-weight:700;margin:16px 0 8px;text-transform:uppercase;letter-spacing:.03em}
+.plan-features{list-style:none;margin-bottom:18px;flex:1}
+.plan-features li{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--text);padding:6px 0;line-height:1.45}
+.plan-features li .chk{color:var(--green);flex-shrink:0;margin-top:1px;font-weight:700}
+.plan-divider{border-top:1px solid var(--border-light);margin:2px 0 12px}
+.plan-commission{font-size:12px;color:var(--accent2);font-weight:700;margin-bottom:14px}
+.pricing-note{font-size:11.5px;color:var(--muted);text-align:center;margin-top:16px}
+
 /* ============ HUNTING PREVIEW ============ */
 .hunt-preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
 @media(max-width:760px){.hunt-preview-grid{grid-template-columns:1fr}}
@@ -420,7 +443,7 @@ img,svg{display:block}
 </section>
 
 <!-- ============ COST COMPARE ============ -->
-<section class="section" id="pricing">
+<section class="section" id="cost-compare">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="section-eyebrow">Why store owners switch</div>
@@ -452,6 +475,138 @@ img,svg{display:block}
       </div>
       <div class="save-banner">Save up to 90% — and get your evenings back.</div>
     </div>
+  </div>
+</section>
+
+<!-- ============ PRICING PLANS ============ -->
+<section class="section-tight" id="pricing" style="background:var(--surface);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light)">
+  <div class="wrap">
+    <div class="section-head center reveal" style="margin-bottom:28px">
+      <div class="section-eyebrow" style="justify-content:center">Choose your plan</div>
+      <h2>Pricing &amp; Plans</h2>
+      <p>Pick a fixed monthly rate, or a lower base fee plus a small commission per order — whichever fits your store.</p>
+    </div>
+
+    <div class="pricing-toggle-row reveal">
+      <div class="range-toggle" id="pricing-plan-toggle">
+        <button class="range-btn active" data-plan="fixed" onclick="setPricingMode('fixed',this)">Fixed Plan</button>
+        <button class="range-btn" data-plan="percentage" onclick="setPricingMode('percentage',this)">Percentage Plan</button>
+      </div>
+    </div>
+
+    <div id="pricing-fixed-panel" class="pricing-grid reveal">
+      <!-- STARTER -->
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">$79<span>/month</span></div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="chk">✓</span> 3 hours daily product hunting</li>
+          <li><span class="chk">✓</span> 3+ languages supported</li>
+          <li><span class="chk">✓</span> 1,000 max orders/month</li>
+          <li><span class="chk">✓</span> Abandoned cart reminders</li>
+          <li><span class="chk">✓</span> Up to 5 active coupons &amp; deals</li>
+          <li><span class="chk">✓</span> Basic revenue analytics</li>
+          <li><span class="chk">✓</span> 10 delivery zones &amp; riders</li>
+          <li><span class="chk">✓</span> Up to 3 team members</li>
+        </ul>
+        <a href="page.html" class="btn btn-outline" style="width:100%;justify-content:center">Get Started</a>
+      </div>
+      <!-- GROWTH (Most Popular) -->
+      <div class="plan-card popular">
+        <div class="plan-ribbon">Most Popular</div>
+        <div class="plan-name">Growth</div>
+        <div class="plan-price">$129<span>/month</span></div>
+        <div class="plan-includes">Everything in Starter, plus:</div>
+        <ul class="plan-features">
+          <li><span class="chk">✓</span> 6 hours daily product hunting</li>
+          <li><span class="chk">✓</span> 7+ languages supported</li>
+          <li><span class="chk">✓</span> 3,000 max orders/month</li>
+          <li><span class="chk">✓</span> Cart recovery + engagement tracking</li>
+          <li><span class="chk">✓</span> Up to 20 active coupons &amp; deals</li>
+          <li><span class="chk">✓</span> Sentiment tracking on mentions</li>
+          <li><span class="chk">✓</span> Peak hours &amp; language analytics</li>
+          <li><span class="chk">✓</span> Unlimited delivery zones &amp; riders</li>
+          <li><span class="chk">✓</span> Unlimited team members</li>
+        </ul>
+        <a href="page.html" class="btn btn-primary" style="width:100%;justify-content:center">Get Started</a>
+      </div>
+      <!-- PRO -->
+      <div class="plan-card">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$299<span>/month</span></div>
+        <div class="plan-includes">Everything in Growth, plus:</div>
+        <ul class="plan-features">
+          <li><span class="chk">✓</span> 9 hours daily product hunting</li>
+          <li><span class="chk">✓</span> Unlimited languages</li>
+          <li><span class="chk">✓</span> 7,000+ max orders/month</li>
+          <li><span class="chk">✓</span> Full cart recovery funnel</li>
+          <li><span class="chk">✓</span> Unlimited coupons &amp; deals</li>
+          <li><span class="chk">✓</span> Sentiment + problem detection</li>
+          <li><span class="chk">✓</span> Full analytics: sizes, colors, add-ons, top products</li>
+        </ul>
+        <a href="page.html" class="btn btn-outline" style="width:100%;justify-content:center">Get Started</a>
+      </div>
+    </div>
+
+    <div id="pricing-percentage-panel" class="pricing-grid" style="display:none">
+      <!-- PERCENTAGE STARTER -->
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">$29<span>/month</span></div>
+        <div class="plan-commission">+ 4% commission per successful order</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="chk">✓</span> 3 hours daily product hunting</li>
+          <li><span class="chk">✓</span> 3+ languages supported</li>
+          <li><span class="chk">✓</span> 1,000 max orders/month</li>
+          <li><span class="chk">✓</span> Abandoned cart reminders</li>
+          <li><span class="chk">✓</span> Up to 5 active coupons &amp; deals</li>
+          <li><span class="chk">✓</span> Basic revenue analytics</li>
+          <li><span class="chk">✓</span> 10 delivery zones &amp; riders</li>
+          <li><span class="chk">✓</span> Up to 3 team members</li>
+        </ul>
+        <a href="page.html" class="btn btn-outline" style="width:100%;justify-content:center">Get Started</a>
+      </div>
+      <!-- PERCENTAGE GROWTH (Most Popular) -->
+      <div class="plan-card popular">
+        <div class="plan-ribbon">Most Popular</div>
+        <div class="plan-name">Growth</div>
+        <div class="plan-price">$79<span>/month</span></div>
+        <div class="plan-commission">+ 2% commission per successful order</div>
+        <div class="plan-includes">Everything in Starter, plus:</div>
+        <ul class="plan-features">
+          <li><span class="chk">✓</span> 6 hours daily product hunting</li>
+          <li><span class="chk">✓</span> 7+ languages supported</li>
+          <li><span class="chk">✓</span> 3,000 max orders/month</li>
+          <li><span class="chk">✓</span> Cart recovery + engagement tracking</li>
+          <li><span class="chk">✓</span> Up to 20 active coupons &amp; deals</li>
+          <li><span class="chk">✓</span> Sentiment tracking on mentions</li>
+          <li><span class="chk">✓</span> Peak hours &amp; language analytics</li>
+          <li><span class="chk">✓</span> Unlimited delivery zones &amp; riders</li>
+          <li><span class="chk">✓</span> Unlimited team members</li>
+        </ul>
+        <a href="page.html" class="btn btn-primary" style="width:100%;justify-content:center">Get Started</a>
+      </div>
+      <!-- PERCENTAGE PRO -->
+      <div class="plan-card">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$139<span>/month</span></div>
+        <div class="plan-commission">+ 1% commission per successful order</div>
+        <div class="plan-includes">Everything in Growth, plus:</div>
+        <ul class="plan-features">
+          <li><span class="chk">✓</span> 9 hours daily product hunting</li>
+          <li><span class="chk">✓</span> Unlimited languages</li>
+          <li><span class="chk">✓</span> 7,000+ max orders/month</li>
+          <li><span class="chk">✓</span> Full cart recovery funnel</li>
+          <li><span class="chk">✓</span> Unlimited coupons &amp; deals</li>
+          <li><span class="chk">✓</span> Sentiment + problem detection</li>
+          <li><span class="chk">✓</span> Full analytics: sizes, colors, add-ons, top products</li>
+        </ul>
+        <a href="page.html" class="btn btn-outline" style="width:100%;justify-content:center">Get Started</a>
+      </div>
+    </div>
+    <div class="pricing-note">Submit the form and we'll reach out within 24 hours.</div>
   </div>
 </section>
 
@@ -502,6 +657,14 @@ img,svg{display:block}
 </footer>
 
 <script>
+function setPricingMode(mode,el){
+  document.querySelectorAll('#pricing-plan-toggle .range-btn').forEach(b=>b.classList.remove('active'));
+  if(el)el.classList.add('active');
+  const fixedPanel=document.getElementById('pricing-fixed-panel');
+  const pctPanel=document.getElementById('pricing-percentage-panel');
+  if(mode==='percentage'){fixedPanel.style.display='none';pctPanel.style.display='grid';}
+  else{fixedPanel.style.display='grid';pctPanel.style.display='none';}
+}
 const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
