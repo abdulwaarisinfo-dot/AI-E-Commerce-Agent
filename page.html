@@ -482,27 +482,35 @@ textarea.form-input{resize:vertical;min-height:80px;line-height:1.55}
 .cost-total-label{font-family:var(--display);font-size:15.5px;font-weight:800;color:var(--text)}
 .cost-total-label.ai{color:var(--accent2)}
 .cost-save-banner{margin-top:22px;background:var(--accent2);color:#fff;border-radius:var(--radius);padding:15px 20px;text-align:center;font-family:var(--display);font-weight:700;font-size:14.5px;letter-spacing:-.005em}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:6px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:6px;align-items:stretch}
 .plan-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:26px 22px 22px;position:relative;transition:all .15s;box-shadow:var(--shadow);display:flex;flex-direction:column}
 .plan-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
 .plan-card.popular{border-color:var(--accent2);box-shadow:var(--shadow-md)}
+.pricing-grid .plan-card{box-sizing:border-box;min-width:0;container-type:inline-size}
+/* price scales with the card so "$2,870.40/year" never wraps; 22px is the fallback for browsers without container units */
+.pricing-grid .plan-card .plan-price{font-size:22px;font-size:clamp(16px,calc(13.3cqi - 6px),28px)}
+/* in narrow cards the "Everything in…" label can wrap: reserve two lines in both variants so feature lists stay aligned */
+@container (max-width:200px){.pricing-grid .plan-includes{min-height:32px}.pricing-grid .plan-divider{margin-bottom:34px}}
+.pricing-grid .plan-card .btn{box-sizing:border-box;width:100%;min-height:42px}
+.pricing-grid .plan-card .btn-primary{border:1.5px solid var(--accent)}
 .plan-ribbon{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent2);color:#fff;font-size:10.5px;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:.05em;white-space:nowrap;text-transform:uppercase}
 .plan-name{font-family:var(--display);font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px;color:var(--text)}
-.plan-price{font-family:var(--display);font-size:34px;font-weight:800;color:var(--text);letter-spacing:-.02em;margin-bottom:2px}
+.plan-price{font-family:var(--display);font-size:28px;line-height:1.15;white-space:nowrap;font-weight:800;color:var(--text);letter-spacing:-.02em;margin-bottom:6px}
 .plan-price span{font-size:13px;font-weight:600;color:var(--muted)}
-.plan-includes{font-size:11px;color:var(--accent2);font-weight:700;margin:16px 0 8px;text-transform:uppercase;letter-spacing:.03em}
+.plan-includes{font-size:11px;color:var(--accent2);font-weight:700;margin:12px 0 8px;line-height:16px;text-transform:uppercase;letter-spacing:.03em}
 .plan-features{list-style:none;margin-bottom:18px;flex:1}
 .plan-features li{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--text);padding:6px 0;line-height:1.45}
 .plan-features li .chk{color:var(--green);flex-shrink:0;margin-top:1px;font-weight:700}
-.plan-divider{border-top:1px solid var(--border-light);margin:2px 0 12px}
+.plan-divider{border-top:1px solid var(--border-light);margin:17px 0 18px}
 .plan-commission{font-size:12px;color:var(--accent2);font-weight:700;margin-bottom:14px}
-.plan-save{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-bottom:14px}
+.plan-save{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);min-height:22px;margin-bottom:14px}
 .plan-save .plan-off{background:var(--green-bg);color:var(--green);border:1px solid #B7E3CA;font-size:10.5px;font-weight:800;padding:2px 9px;border-radius:20px;letter-spacing:.04em;white-space:nowrap}
 .delivery-info{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--green-bg);border:1px solid #B7E3CA;border-radius:var(--radius);padding:14px 18px;font-size:13.5px;font-weight:600;color:var(--text);text-align:center}
 .delivery-info{margin-bottom:20px}
 .percent-note-card{background:var(--bg);border:1.5px dashed var(--border);border-radius:var(--radius);padding:32px 24px;text-align:center}
 .percent-note-icon{font-size:30px;margin-bottom:10px}
-@media(max-width:900px){.pricing-grid{grid-template-columns:1fr}.cost-compare-grid{grid-template-columns:1fr!important;gap:8px}}
+@media(max-width:1000px){.pricing-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:900px){.cost-compare-grid{grid-template-columns:1fr!important;gap:8px}}
 </style>
 </head>
 <body>
