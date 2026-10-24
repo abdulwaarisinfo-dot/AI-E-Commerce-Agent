@@ -889,7 +889,7 @@ textarea.form-input{resize:vertical;min-height:80px;line-height:1.55}
       <div class="topbar">
         <div class="topbar-left">
           <div class="page-title">Product <span>Hunting</span></div>
-          <div class="page-sub">Social listening on Reddit (Telegram, Facebook, LinkedIn, X & Instagram coming soon) — trending demand, pain points, and what people are saying</div>
+          <div class="page-sub">Social listening starting with Reddit (Telegram, Facebook, LinkedIn, X & Instagram coming soon) — trending demand, pain points, and what people are saying</div>
         </div>
         <div class="topbar-right">
           <input class="search-bar" placeholder="Search trends, problems, mentions…" oninput="searchHunt(this.value)"/>
@@ -901,17 +901,17 @@ textarea.form-input{resize:vertical;min-height:80px;line-height:1.55}
         <div class="stat-card"><div class="stat-icon" style="background:var(--amber-bg)">💬</div><div class="stat-label">Tracked Mentions</div><div class="stat-val" id="hunt-total-mentions">—</div><div class="stat-sub">Sample data (illustrative)</div></div>
         <div class="stat-card"><div class="stat-icon" style="background:var(--green-bg)">🔥</div><div class="stat-label">Trending Products</div><div class="stat-val" id="hunt-trending-count">—</div><div class="stat-sub">Demand signals found</div></div>
         <div class="stat-card"><div class="stat-icon" style="background:var(--red-bg)">⚠️</div><div class="stat-label">Problems Surfaced</div><div class="stat-val" id="hunt-problems-count">—</div><div class="stat-sub">Recurring complaints</div></div>
-        <div class="stat-card"><div class="stat-icon" style="background:var(--blue-bg)">🌐</div><div class="stat-label">Platforms Monitored</div><div class="stat-val" id="hunt-platforms-count">—</div><div class="stat-sub" id="hunt-platforms-sub">Reddit</div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:var(--blue-bg)">🌐</div><div class="stat-label">Platforms Available</div><div class="stat-val" id="hunt-platforms-count">—</div><div class="stat-sub" id="hunt-platforms-sub">Reddit</div></div>
         <div class="stat-card accent-card"><div class="stat-icon" style="background:rgba(255,255,255,.15)">📈</div><div class="stat-label">Positive Sentiment</div><div class="stat-val" id="hunt-sentiment">—</div><div class="stat-sub">Of sample mentions</div></div>
       </div>
       <div class="filter-tabs">
         <div class="filter-tab active" onclick="setHuntPlatformFilter('',this)">All Platforms</div>
         <div class="filter-tab plat-tab" onclick="setHuntPlatformFilter('reddit',this)"><span class="plat-icon-badge" style="background:#FF4500"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="14.2" r="7.3" fill="#fff"/><circle cx="9.2" cy="14" r="1.15" fill="#FF4500"/><circle cx="14.8" cy="14" r="1.15" fill="#FF4500"/><path d="M9 17c.8.7 1.9 1 3 1s2.2-.3 3-1" stroke="#FF4500" stroke-width="1.1" stroke-linecap="round"/><circle cx="17.3" cy="9.2" r="1.6" fill="#fff"/><path d="M12 9.5 12.9 4.6" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/><circle cx="13.1" cy="4.3" r="1.1" fill="#fff"/></svg></span>Reddit</div>
-        <div class="filter-tab plat-tab soon" role="button" aria-disabled="true" title="Telegram — Coming Soon"><span class="plat-icon-badge" style="background:#229ED9"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.6 19 5.2c.7-.3 1.4.3 1.1 1.1l-2.6 12.6c-.2.9-1.1 1.1-1.8.6l-3.9-2.9-2 1.9c-.2.2-.5.3-.8.2l.3-3.9 7.1-6.4c.3-.3-.1-.4-.4-.2l-8.7 5.5-3.7-1.1c-.8-.2-.8-.8.1-1.1Z" fill="#fff"/></svg></span>Telegram<span class="soon-tag">Coming Soon</span></div>
-        <div class="filter-tab plat-tab soon" role="button" aria-disabled="true" title="Facebook — Coming Soon"><span class="plat-icon-badge" style="background:#1877F2"><svg viewBox="0 0 24 24" fill="none"><path d="M14.5 8.2h1.8V5.5h-2.1c-2.2 0-3.4 1.4-3.4 3.5v1.8H8.9v2.8h1.9V19h2.9v-5.4h2l.4-2.8h-2.4V9.4c0-.7.2-1.2 1-1.2Z" fill="#fff"/></svg></span>Facebook<span class="soon-tag">Coming Soon</span></div>
-        <div class="filter-tab plat-tab soon" role="button" aria-disabled="true" title="LinkedIn — Coming Soon"><span class="plat-icon-badge" style="background:#0A66C2"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="9.5" width="2.6" height="8.3" fill="#fff"/><circle cx="6.3" cy="6.4" r="1.5" fill="#fff"/><path d="M10.3 9.5H12.8v1.2c.5-.8 1.4-1.4 2.7-1.4 2.1 0 3.3 1.4 3.3 3.9v4.6H16.2V13.7c0-1.2-.4-2-1.5-2s-1.7.8-1.7 2v4.1H10.3Z" fill="#fff"/></svg></span>LinkedIn<span class="soon-tag">Coming Soon</span></div>
-        <div class="filter-tab plat-tab soon" role="button" aria-disabled="true" title="X — Coming Soon"><span class="plat-icon-badge" style="background:#0F1419"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>X<span class="soon-tag">Coming Soon</span></div>
-        <div class="filter-tab plat-tab soon" role="button" aria-disabled="true" title="Instagram — Coming Soon"><span class="plat-icon-badge" style="background:#E4405F"><svg viewBox="0 0 24 24" fill="none"><rect x="5.5" y="5.5" width="13" height="13" rx="4" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="3.2" stroke="#fff" stroke-width="1.5"/><circle cx="16.1" cy="7.9" r="1" fill="#fff"/></svg></span>Instagram<span class="soon-tag">Coming Soon</span></div>
+        <div class="filter-tab plat-tab soon" title="Telegram — Coming Soon"><span class="plat-icon-badge" style="background:#229ED9"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.6 19 5.2c.7-.3 1.4.3 1.1 1.1l-2.6 12.6c-.2.9-1.1 1.1-1.8.6l-3.9-2.9-2 1.9c-.2.2-.5.3-.8.2l.3-3.9 7.1-6.4c.3-.3-.1-.4-.4-.2l-8.7 5.5-3.7-1.1c-.8-.2-.8-.8.1-1.1Z" fill="#fff"/></svg></span>Telegram<span class="soon-tag">Coming Soon</span></div>
+        <div class="filter-tab plat-tab soon" title="Facebook — Coming Soon"><span class="plat-icon-badge" style="background:#1877F2"><svg viewBox="0 0 24 24" fill="none"><path d="M14.5 8.2h1.8V5.5h-2.1c-2.2 0-3.4 1.4-3.4 3.5v1.8H8.9v2.8h1.9V19h2.9v-5.4h2l.4-2.8h-2.4V9.4c0-.7.2-1.2 1-1.2Z" fill="#fff"/></svg></span>Facebook<span class="soon-tag">Coming Soon</span></div>
+        <div class="filter-tab plat-tab soon" title="LinkedIn — Coming Soon"><span class="plat-icon-badge" style="background:#0A66C2"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="9.5" width="2.6" height="8.3" fill="#fff"/><circle cx="6.3" cy="6.4" r="1.5" fill="#fff"/><path d="M10.3 9.5H12.8v1.2c.5-.8 1.4-1.4 2.7-1.4 2.1 0 3.3 1.4 3.3 3.9v4.6H16.2V13.7c0-1.2-.4-2-1.5-2s-1.7.8-1.7 2v4.1H10.3Z" fill="#fff"/></svg></span>LinkedIn<span class="soon-tag">Coming Soon</span></div>
+        <div class="filter-tab plat-tab soon" title="X — Coming Soon"><span class="plat-icon-badge" style="background:#0F1419"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>X<span class="soon-tag">Coming Soon</span></div>
+        <div class="filter-tab plat-tab soon" title="Instagram — Coming Soon"><span class="plat-icon-badge" style="background:#E4405F"><svg viewBox="0 0 24 24" fill="none"><rect x="5.5" y="5.5" width="13" height="13" rx="4" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="3.2" stroke="#fff" stroke-width="1.5"/><circle cx="16.1" cy="7.9" r="1" fill="#fff"/></svg></span>Instagram<span class="soon-tag">Coming Soon</span></div>
       </div>
 
       <div class="card-head" style="margin-bottom:14px">
@@ -1286,7 +1286,7 @@ Versandinformationen 🚚</textarea>
             </div>
             <div class="cost-row ai">
               <div class="cost-icon">✅</div>
-              <div><div class="cost-row-title">Product research</div><div class="cost-row-sub">9 hours/day on Reddit — more platforms coming soon</div></div>
+              <div><div class="cost-row-title">Product research</div><div class="cost-row-sub">9 hours/day, starting with Reddit — more platforms coming soon</div></div>
             </div>
             <div class="cost-row ai">
               <div class="cost-icon">✅</div>
@@ -3101,7 +3101,7 @@ function huntAddToCatalog(id){
     const titleEl=document.getElementById('pm-title');
     if(titleEl){titleEl.value=t.name;onTitleInput(t.name);}
     const descEl=document.getElementById('pm-desc');
-    if(descEl){const live=t.platforms.filter(isPlatformAvailable).map(p=>PLATFORM_META[p].name);descEl.value=live.length?'Sourced from social listening — high demand signal on '+live.join(', ')+'.':'Sourced from product hunting sample data.';}
+    if(descEl)descEl.value='Sourced from product hunting sample data.';
   },50);
   toast('Prefilled product form from trend: '+t.name);
 }
