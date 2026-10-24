@@ -440,6 +440,14 @@ textarea.form-input{resize:vertical;min-height:80px;line-height:1.55}
 .filter-tab.plat-tab{display:inline-flex;align-items:center;gap:6px}
 .filter-tab.plat-tab .plat-icon-badge{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .filter-tab.plat-tab .plat-icon-badge svg{width:9.5px;height:9.5px;display:block}
+.soon-tag{display:inline-flex;align-items:center;font-size:9.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;line-height:1.2;padding:3px 8px;border-radius:20px;background:var(--amber-bg);color:var(--amber);border:1px solid #FAD590;white-space:nowrap;flex-shrink:0}
+.soon-tag.sample{background:var(--bg);color:var(--muted);border-color:var(--border)}
+/* Coming Soon platforms: brand icon kept, not selectable */
+.filter-tab.plat-tab.soon{background:var(--bg);border-style:dashed;cursor:not-allowed}
+.filter-tab.plat-tab.soon:hover:not(.active){border-color:var(--border);color:var(--muted)}
+@media(max-width:480px){.filter-tab.plat-tab.soon{padding:5px 9px;gap:5px}.filter-tab.plat-tab .soon-tag{font-size:8.5px;padding:2px 5px;letter-spacing:.03em}}
+.platform-chip .chip-soon{font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;background:#fff;color:var(--amber);padding:1px 6px;border-radius:10px;margin-left:2px}
+.hunt-demo-banner{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--amber-bg);border:1px solid #FAD590;border-radius:var(--radius-sm);padding:10px 14px;font-size:12px;line-height:1.5;color:var(--text);margin-bottom:18px}
 @media(max-width:768px){
   .hunt-stats-grid{grid-template-columns:1fr 1fr}
 }
@@ -881,28 +889,29 @@ textarea.form-input{resize:vertical;min-height:80px;line-height:1.55}
       <div class="topbar">
         <div class="topbar-left">
           <div class="page-title">Product <span>Hunting</span></div>
-          <div class="page-sub">Social listening across Reddit, Telegram, Facebook, LinkedIn, X & Instagram — trending demand, pain points, and what people are saying</div>
+          <div class="page-sub">Social listening on Reddit (Telegram, Facebook, LinkedIn, X & Instagram coming soon) — trending demand, pain points, and what people are saying</div>
         </div>
         <div class="topbar-right">
           <input class="search-bar" placeholder="Search trends, problems, mentions…" oninput="searchHunt(this.value)"/>
           <button class="refresh-btn" onclick="renderHunting()">↻ Refresh</button>
         </div>
       </div>
+      <div class="hunt-demo-banner" role="note"><span class="soon-tag sample">Sample data</span><span>Illustrative examples, not live results. <b>Reddit</b> is the only platform available right now — Telegram, Facebook, LinkedIn, X and Instagram are <b>Coming Soon</b>.</span></div>
       <div class="stats-grid hunt-stats-grid">
-        <div class="stat-card"><div class="stat-icon" style="background:var(--amber-bg)">💬</div><div class="stat-label">Tracked Mentions</div><div class="stat-val" id="hunt-total-mentions">—</div><div class="stat-sub">Across all platforms</div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:var(--amber-bg)">💬</div><div class="stat-label">Tracked Mentions</div><div class="stat-val" id="hunt-total-mentions">—</div><div class="stat-sub">Sample data (illustrative)</div></div>
         <div class="stat-card"><div class="stat-icon" style="background:var(--green-bg)">🔥</div><div class="stat-label">Trending Products</div><div class="stat-val" id="hunt-trending-count">—</div><div class="stat-sub">Demand signals found</div></div>
         <div class="stat-card"><div class="stat-icon" style="background:var(--red-bg)">⚠️</div><div class="stat-label">Problems Surfaced</div><div class="stat-val" id="hunt-problems-count">—</div><div class="stat-sub">Recurring complaints</div></div>
-        <div class="stat-card"><div class="stat-icon" style="background:var(--blue-bg)">🌐</div><div class="stat-label">Platforms Monitored</div><div class="stat-val" id="hunt-platforms-count">—</div><div class="stat-sub">Reddit, Telegram +4</div></div>
-        <div class="stat-card accent-card"><div class="stat-icon" style="background:rgba(255,255,255,.15)">📈</div><div class="stat-label">Positive Sentiment</div><div class="stat-val" id="hunt-sentiment">—</div><div class="stat-sub">Of tracked mentions</div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:var(--blue-bg)">🌐</div><div class="stat-label">Platforms Monitored</div><div class="stat-val" id="hunt-platforms-count">—</div><div class="stat-sub" id="hunt-platforms-sub">Reddit</div></div>
+        <div class="stat-card accent-card"><div class="stat-icon" style="background:rgba(255,255,255,.15)">📈</div><div class="stat-label">Positive Sentiment</div><div class="stat-val" id="hunt-sentiment">—</div><div class="stat-sub">Of sample mentions</div></div>
       </div>
       <div class="filter-tabs">
         <div class="filter-tab active" onclick="setHuntPlatformFilter('',this)">All Platforms</div>
         <div class="filter-tab plat-tab" onclick="setHuntPlatformFilter('reddit',this)"><span class="plat-icon-badge" style="background:#FF4500"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="14.2" r="7.3" fill="#fff"/><circle cx="9.2" cy="14" r="1.15" fill="#FF4500"/><circle cx="14.8" cy="14" r="1.15" fill="#FF4500"/><path d="M9 17c.8.7 1.9 1 3 1s2.2-.3 3-1" stroke="#FF4500" stroke-width="1.1" stroke-linecap="round"/><circle cx="17.3" cy="9.2" r="1.6" fill="#fff"/><path d="M12 9.5 12.9 4.6" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/><circle cx="13.1" cy="4.3" r="1.1" fill="#fff"/></svg></span>Reddit</div>
-        <div class="filter-tab plat-tab" onclick="setHuntPlatformFilter('telegram',this)"><span class="plat-icon-badge" style="background:#229ED9"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.6 19 5.2c.7-.3 1.4.3 1.1 1.1l-2.6 12.6c-.2.9-1.1 1.1-1.8.6l-3.9-2.9-2 1.9c-.2.2-.5.3-.8.2l.3-3.9 7.1-6.4c.3-.3-.1-.4-.4-.2l-8.7 5.5-3.7-1.1c-.8-.2-.8-.8.1-1.1Z" fill="#fff"/></svg></span>Telegram</div>
-        <div class="filter-tab plat-tab" onclick="setHuntPlatformFilter('facebook',this)"><span class="plat-icon-badge" style="background:#1877F2"><svg viewBox="0 0 24 24" fill="none"><path d="M14.5 8.2h1.8V5.5h-2.1c-2.2 0-3.4 1.4-3.4 3.5v1.8H8.9v2.8h1.9V19h2.9v-5.4h2l.4-2.8h-2.4V9.4c0-.7.2-1.2 1-1.2Z" fill="#fff"/></svg></span>Facebook</div>
-        <div class="filter-tab plat-tab" onclick="setHuntPlatformFilter('linkedin',this)"><span class="plat-icon-badge" style="background:#0A66C2"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="9.5" width="2.6" height="8.3" fill="#fff"/><circle cx="6.3" cy="6.4" r="1.5" fill="#fff"/><path d="M10.3 9.5H12.8v1.2c.5-.8 1.4-1.4 2.7-1.4 2.1 0 3.3 1.4 3.3 3.9v4.6H16.2V13.7c0-1.2-.4-2-1.5-2s-1.7.8-1.7 2v4.1H10.3Z" fill="#fff"/></svg></span>LinkedIn</div>
-        <div class="filter-tab plat-tab" onclick="setHuntPlatformFilter('x',this)"><span class="plat-icon-badge" style="background:#0F1419"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>X</div>
-        <div class="filter-tab plat-tab" onclick="setHuntPlatformFilter('instagram',this)"><span class="plat-icon-badge" style="background:#E4405F"><svg viewBox="0 0 24 24" fill="none"><rect x="5.5" y="5.5" width="13" height="13" rx="4" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="3.2" stroke="#fff" stroke-width="1.5"/><circle cx="16.1" cy="7.9" r="1" fill="#fff"/></svg></span>Instagram</div>
+        <div class="filter-tab plat-tab soon" role="button" aria-disabled="true" title="Telegram — Coming Soon"><span class="plat-icon-badge" style="background:#229ED9"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.6 19 5.2c.7-.3 1.4.3 1.1 1.1l-2.6 12.6c-.2.9-1.1 1.1-1.8.6l-3.9-2.9-2 1.9c-.2.2-.5.3-.8.2l.3-3.9 7.1-6.4c.3-.3-.1-.4-.4-.2l-8.7 5.5-3.7-1.1c-.8-.2-.8-.8.1-1.1Z" fill="#fff"/></svg></span>Telegram<span class="soon-tag">Coming Soon</span></div>
+        <div class="filter-tab plat-tab soon" role="button" aria-disabled="true" title="Facebook — Coming Soon"><span class="plat-icon-badge" style="background:#1877F2"><svg viewBox="0 0 24 24" fill="none"><path d="M14.5 8.2h1.8V5.5h-2.1c-2.2 0-3.4 1.4-3.4 3.5v1.8H8.9v2.8h1.9V19h2.9v-5.4h2l.4-2.8h-2.4V9.4c0-.7.2-1.2 1-1.2Z" fill="#fff"/></svg></span>Facebook<span class="soon-tag">Coming Soon</span></div>
+        <div class="filter-tab plat-tab soon" role="button" aria-disabled="true" title="LinkedIn — Coming Soon"><span class="plat-icon-badge" style="background:#0A66C2"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="9.5" width="2.6" height="8.3" fill="#fff"/><circle cx="6.3" cy="6.4" r="1.5" fill="#fff"/><path d="M10.3 9.5H12.8v1.2c.5-.8 1.4-1.4 2.7-1.4 2.1 0 3.3 1.4 3.3 3.9v4.6H16.2V13.7c0-1.2-.4-2-1.5-2s-1.7.8-1.7 2v4.1H10.3Z" fill="#fff"/></svg></span>LinkedIn<span class="soon-tag">Coming Soon</span></div>
+        <div class="filter-tab plat-tab soon" role="button" aria-disabled="true" title="X — Coming Soon"><span class="plat-icon-badge" style="background:#0F1419"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>X<span class="soon-tag">Coming Soon</span></div>
+        <div class="filter-tab plat-tab soon" role="button" aria-disabled="true" title="Instagram — Coming Soon"><span class="plat-icon-badge" style="background:#E4405F"><svg viewBox="0 0 24 24" fill="none"><rect x="5.5" y="5.5" width="13" height="13" rx="4" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="3.2" stroke="#fff" stroke-width="1.5"/><circle cx="16.1" cy="7.9" r="1" fill="#fff"/></svg></span>Instagram<span class="soon-tag">Coming Soon</span></div>
       </div>
 
       <div class="card-head" style="margin-bottom:14px">
@@ -1277,7 +1286,7 @@ Versandinformationen 🚚</textarea>
             </div>
             <div class="cost-row ai">
               <div class="cost-icon">✅</div>
-              <div><div class="cost-row-title">Product research</div><div class="cost-row-sub">9 hours/day across 6 platforms</div></div>
+              <div><div class="cost-row-title">Product research</div><div class="cost-row-sub">9 hours/day on Reddit — more platforms coming soon</div></div>
             </div>
             <div class="cost-row ai">
               <div class="cost-icon">✅</div>
@@ -2986,14 +2995,17 @@ function addDeliveryException(){deliveryExceptions.push({cat:'electronics',time:
 async function saveDeliveryTime(){const g=document.getElementById('dt-global').value.trim();const ex={};deliveryExceptions.forEach(e=>{if(e.cat&&e.time)ex[e.cat]=e.time;});try{await fetch('/api/suggestions',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({delivery_time:g,delivery_time_exceptions:ex})});toast('✅ Shipping time saved to MongoDB!');}catch(e){toast('Shipping time updated (demo)');}}
 
 // ======================== PRODUCT HUNTING ========================
+// Availability rule: Reddit is the only available platform; all others are "Coming Soon".
+// Set `available:true` only once a real integration for that platform exists.
 const PLATFORM_META={
-  reddit:{name:'Reddit',color:'#FF4500'},
-  telegram:{name:'Telegram',color:'#229ED9'},
-  facebook:{name:'Facebook',color:'#1877F2'},
-  linkedin:{name:'LinkedIn',color:'#0A66C2'},
-  x:{name:'X',color:'#0F1419'},
-  instagram:{name:'Instagram',color:'#E4405F'}
+  reddit:{name:'Reddit',color:'#FF4500',available:true},
+  telegram:{name:'Telegram',color:'#229ED9',available:false},
+  facebook:{name:'Facebook',color:'#1877F2',available:false},
+  linkedin:{name:'LinkedIn',color:'#0A66C2',available:false},
+  x:{name:'X',color:'#0F1419',available:false},
+  instagram:{name:'Instagram',color:'#E4405F',available:false}
 };
+function isPlatformAvailable(p){return !!(PLATFORM_META[p]&&PLATFORM_META[p].available);}
 function platformSVG(p){
   switch(p){
     case 'reddit':return'<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="14.2" r="7.3" fill="#fff"/><circle cx="9.2" cy="14" r="1.15" fill="'+PLATFORM_META.reddit.color+'"/><circle cx="14.8" cy="14" r="1.15" fill="'+PLATFORM_META.reddit.color+'"/><path d="M9 17c.8.7 1.9 1 3 1s2.2-.3 3-1" stroke="'+PLATFORM_META.reddit.color+'" stroke-width="1.1" stroke-linecap="round"/><circle cx="17.3" cy="9.2" r="1.6" fill="#fff"/><path d="M12 9.5 12.9 4.6" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/><circle cx="13.1" cy="4.3" r="1.1" fill="#fff"/></svg>';
@@ -3005,7 +3017,7 @@ function platformSVG(p){
     default:return'<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="7" stroke="#fff" stroke-width="1.5"/></svg>';
   }
 }
-function platformChip(p){const m=PLATFORM_META[p]||{name:p,color:'#666'};return `<span class="platform-chip" style="background:${m.color}"><span class="plat-icon-badge">${platformSVG(p)}</span>${m.name}</span>`;}
+function platformChip(p){const m=PLATFORM_META[p]||{name:p,color:'#666'};const soon=!isPlatformAvailable(p);return `<span class="platform-chip${soon?' soon':''}" style="background:${m.color}"${soon?` title="${m.name} — Coming Soon"`:''}><span class="plat-icon-badge">${platformSVG(p)}</span>${m.name}${soon?'<span class="chip-soon">Coming Soon</span>':''}</span>`;}
 
 let huntPlatformFilter='', huntSearch='', _huntTrending=[], _huntProblems=[], _huntMentions=[];
 
@@ -3034,7 +3046,7 @@ function getDemoMentions(){return[
   {_id:'m7',platform:'reddit',handle:'u/newmom_faisalabad',text:'Any recommendations for a lockable screen-time box for toddlers? Every parenting sub is asking the same thing.',sentiment:'Neutral',engagement:63,time:'1d ago',url:'https://reddit.com'},
   {_id:'m8',platform:'x',handle:'@travel.lightpk',text:'Compression packing cubes changed how I pack completely. More local stores need to carry these.',sentiment:'Positive',engagement:201,time:'2d ago',url:'https://x.com'},
 ];}
-function setHuntPlatformFilter(p,el){huntPlatformFilter=p;document.querySelectorAll('#page-hunting .filter-tab').forEach(t=>t.classList.remove('active'));if(el)el.classList.add('active');renderHunting();}
+function setHuntPlatformFilter(p,el){if(p&&!isPlatformAvailable(p))return; /* Coming Soon platforms cannot be selected */ huntPlatformFilter=p;document.querySelectorAll('#page-hunting .filter-tab').forEach(t=>t.classList.remove('active'));if(el)el.classList.add('active');renderHunting();}
 function searchHunt(q){huntSearch=q;renderHunting();}
 function renderHunting(){
   if(!_huntTrending.length)_huntTrending=getDemoTrending();
@@ -3043,7 +3055,9 @@ function renderHunting(){
   document.getElementById('hunt-total-mentions').textContent=_huntTrending.reduce((s,t)=>s+t.mentions,0).toLocaleString();
   document.getElementById('hunt-trending-count').textContent=_huntTrending.length;
   document.getElementById('hunt-problems-count').textContent=_huntProblems.length;
-  document.getElementById('hunt-platforms-count').textContent=Object.keys(PLATFORM_META).length;
+  const _availP=Object.values(PLATFORM_META).filter(m=>m.available),_soonN=Object.keys(PLATFORM_META).length-_availP.length;
+  document.getElementById('hunt-platforms-count').textContent=_availP.length;
+  const _ps=document.getElementById('hunt-platforms-sub');if(_ps)_ps.textContent=_availP.map(m=>m.name).join(', ')+(_soonN?' · '+_soonN+' Coming Soon':'');
   const posCount=_huntMentions.filter(m=>m.sentiment==='Positive').length;
   const sentiment=_huntMentions.length?Math.round(posCount/_huntMentions.length*100):0;
   document.getElementById('hunt-sentiment').textContent=sentiment+'%';
@@ -3087,7 +3101,7 @@ function huntAddToCatalog(id){
     const titleEl=document.getElementById('pm-title');
     if(titleEl){titleEl.value=t.name;onTitleInput(t.name);}
     const descEl=document.getElementById('pm-desc');
-    if(descEl)descEl.value='Sourced from social listening — high demand signal across '+t.platforms.map(p=>PLATFORM_META[p].name).join(', ')+'.';
+    if(descEl){const live=t.platforms.filter(isPlatformAvailable).map(p=>PLATFORM_META[p].name);descEl.value=live.length?'Sourced from social listening — high demand signal on '+live.join(', ')+'.':'Sourced from product hunting sample data.';}
   },50);
   toast('Prefilled product form from trend: '+t.name);
 }
@@ -3118,7 +3132,7 @@ function renderHuntMentions(){
   wrap.innerHTML=items.map(m=>`
     <div class="mention-row">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:6px">
-        <div style="display:flex;align-items:center;gap:8px">
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;min-width:0">
           ${platformChip(m.platform)}
           <span style="font-size:12.5px;font-weight:700;color:var(--text)">${esc(m.handle)}</span>
         </div>
@@ -3127,7 +3141,7 @@ function renderHuntMentions(){
       <div style="font-size:13px;color:var(--text);line-height:1.55;margin-bottom:8px">${esc(m.text)}</div>
       <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--muted)">
         <span>❤️ ${m.engagement} engagements · ${m.time}</span>
-        <a href="${esc(m.url)}" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600">View Post →</a>
+        ${isPlatformAvailable(m.platform)?`<a href="${esc(m.url)}" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600">View Post →</a>`:`<span style="color:var(--muted);font-weight:600">Sample · Coming Soon</span>`}
       </div>
     </div>`).join('');
 }
